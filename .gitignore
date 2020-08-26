@@ -1,0 +1,12 @@
+*.zip
+*.rar
+*.log
+.svn
+node_modules
+npm-debug.log*
+.DS_Store
+.vscode
+.idea
+dist
+es
+lib

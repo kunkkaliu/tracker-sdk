@@ -1,0 +1,47 @@
+{
+  "name": "tracker",
+  "version": "1.0.0",
+  "description": "无埋点前端工具库",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node example/devServer.js",
+    "prepublishOnly": "tnpm run build",
+    "build": "rimraf ./dist ./es ./lib && rollup -c rollup.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kunkkaliu/tracker-sdk.git"
+  },
+  "author": "kunkkaliu",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "lib",
+    "es"
+  ],
+  "dependencies": {
+    "@babel/runtime": "^7.0.0",
+    "extend": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "koa": "^2.5.3",
+    "koa-compress": "^3.0.0",
+    "koa-router": "^7.4.0",
+    "koa-static-cache": "^5.1.2",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.66.0",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^9.1.6",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-license": "^0.8.1",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-postcss": "^1.6.2",
+    "rollup-plugin-uglify": "^6.0.0"
+  }
+}
