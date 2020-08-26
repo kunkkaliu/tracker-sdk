@@ -1,4 +1,3 @@
-import extend from 'extend';
 import { version } from '../package.json';
 import {
   getUniqueId,
@@ -50,7 +49,10 @@ class Tracker {
    * @param {*} options 
    */
   config(options = {}) {
-    options = extend(true, {}, DefaultOptions, options);
+    options = {
+      ...DefaultOptions,
+      ...options,
+    };
     if (!options.BossId || !options.Pwd) {
       throw new Error('BossId或者Pwd不能为空!');
     }
@@ -68,7 +70,10 @@ class Tracker {
    */
   setContent(data) {
     const content = this._options.content || {};
-    this._options.content = extend(true, {}, content, data);
+    this._options.content = {
+      ...content,
+      ...data,
+    };
     return this;
   }
 
@@ -176,7 +181,10 @@ class Tracker {
       return;
     }
     const content = this._options.content || {};
-    data = extend(true, {}, content, data);
+    data = {
+      ...content,
+      ...data,
+    };
     const { href } = document.location;
     data.url = encodeURIComponent(data.url || href.split('?')[0]);
     const sendData = {

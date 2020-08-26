@@ -1,5 +1,3 @@
-import extend from 'extend';
-
 /**
  * 获取url中的参数
  * @param {*} url 
@@ -128,10 +126,11 @@ export const getBoundingClientRect = (element) => {
   const rect = element.getBoundingClientRect();
   const width = rect.width || rect.right - rect.left;
   const heigth = rect.heigth || rect.bottom - rect.top;
-  return extend({}, rect, {
+  return {
+    ...rect,
     width,
     heigth,
-  });
+  };
 }
 
 let count = 0;
