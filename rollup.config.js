@@ -22,8 +22,8 @@ export default [{
         {
             file: 'dist/tracker.min.js',
             name: 'Tracker',
-            sourcemap: true,
-            format: 'iife'
+            format: 'iife',
+            indent: false,
         }
     ],
     plugins: [
@@ -43,16 +43,19 @@ export default [{
     output: [
         {
             file: 'lib/index.js',
-            sourcemap: true,
-            format: 'cjs'
+            format: 'cjs',
+            indent: false,
         }, {
             file: 'es/index.js',
-            sourcemap: true,
-            format: 'es'
+            format: 'es',
+            indent: false,
         }
     ],
     plugins: [
         postcss({ extensions: ['.css'] }),
+        resolve({
+          jsnext: true,
+        }),
         commonjs(),
         json(),
         babel({

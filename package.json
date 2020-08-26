@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node example/devServer.js",
-    "prepublishOnly": "tnpm run build",
+    "lint": "eslint --ext js src",
+    "prepublishOnly": "npm run lint && npm run build",
     "build": "rimraf ./dist ./es ./lib && rollup -c rollup.config.js"
   },
   "repository": {
@@ -23,6 +24,7 @@
   ],
   "dependencies": {
     "@babel/runtime": "^7.0.0",
+    "core-js": "2",
     "extend": "^3.0.2"
   },
   "devDependencies": {
@@ -30,6 +32,7 @@
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
+    "eslint": "^7.7.0",
     "koa": "^2.5.3",
     "koa-compress": "^3.0.0",
     "koa-router": "^7.4.0",
