@@ -3,7 +3,7 @@ import license from 'rollup-plugin-license';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 import commonjs from '@rollup/plugin-commonjs';
-import { uglify } from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 import { version, name, author } from './package.json';
 
@@ -16,16 +16,15 @@ const banner = `/*!
 *
 */`;
 
-export default [{
+const { NODE_ENV } = process.env;
+
+const config = {
   input: 'src/index.js',
-  output: [
-    {
-      file: 'dist/tracker.min.js',
-      name: 'Tracker',
-      format: 'iife',
-      indent: false,
-    }
-  ],
+  output: {
+    file: 'dist/tracker.js',
+    format: 'umd',
+    name: 'Tracker',
+  },
   plugins: [
     postcss({ extensions: ['.css'] }),
     nodeResolve(),
@@ -35,33 +34,15 @@ export default [{
       runtimeHelpers: true,
       exclude: 'node_modules/**'  // 排除node_modules 下的文件
     }),
-    uglify(),
-    license({ banner })
+    license({ banner }),
   ]
-}, {
-  input: 'src/index.js',
-  output: [
-    {
-      file: 'lib/index.js',
-      format: 'cjs',
-      exports: 'default',
-      indent: false,
-    }, {
-      file: 'es/index.js',
-      format: 'es',
-      exports: 'default',
-      indent: false,
-    }
-  ],
-  plugins: [
-    postcss({ extensions: ['.css'] }),
-    nodeResolve(),
-    commonjs(),
-    json(),
-    babel({
-      runtimeHelpers: true,
-      exclude: 'node_modules/**'  // 排除node_modules 下的文件
-    }),
-    license({ banner })
-  ]
-}]
+}
+
+if (NODE_ENV === 'production') {
+  config.output.file = 'dist/tracker.min.js';
+  config.plugins.push(
+    terser()
+  )
+}
+
+export default config;
