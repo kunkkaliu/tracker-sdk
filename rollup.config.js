@@ -4,7 +4,6 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
-import postcss from 'rollup-plugin-postcss';
 import { version, name, author } from './package.json';
 
 const banner = `/*!
@@ -26,7 +25,6 @@ const config = {
     name: 'Tracker',
   },
   plugins: [
-    postcss({ extensions: ['.css'] }),
     nodeResolve(),
     commonjs(),
     json(),
@@ -36,7 +34,7 @@ const config = {
     }),
     license({ banner }),
   ]
-}
+};
 
 if (NODE_ENV === 'production') {
   config.output.file = 'dist/tracker.min.js';

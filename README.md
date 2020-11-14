@@ -8,9 +8,14 @@
 tnpm install tracker --save
 
 import Tracker from 'tracker';
+import 'tracker/heatmap/style';
+
+// 或者
 const Tracker = require('tracker');
+require('tracker/heatmap/style');
 
 // 2、通过cdn的方式引入
+<link rel="stylesheet" href="//xx.com/libs/tracker.min.css">
 <script src="//xx.com/libs/tracker.min.js"></script>
 ```
 

@@ -2,7 +2,6 @@ import {
   getComputedStyle,
   querySelector,
 } from '../utils';
-import './index.css';
 
 let renderTimer = null;
 let cacheData = [];

@@ -4,7 +4,6 @@ import {
   getComputedStyle,
   querySelector,
 } from '../utils';
-import './index.css';
 
 let heatmap = null;
 let renderTimer = null;
