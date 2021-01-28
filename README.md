@@ -11,7 +11,7 @@ import Tracker from 'tracker';
 import 'tracker/heatmap/style';
 
 // 或者
-const Tracker = require('tracker');
+const Tracker = require('tracker').default;
 require('tracker/heatmap/style');
 
 // 2、通过cdn的方式引入
