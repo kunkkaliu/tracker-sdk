@@ -14,7 +14,7 @@ module.exports = {
     "corejs": 3
   }], "@babel/plugin-proposal-class-properties"],
   "env": {
-    "cjs": {
+    "commonjs": {
       "plugins": ["@babel/plugin-transform-modules-commonjs"]
     },
     "es": {

@@ -60,11 +60,11 @@ function compileScripts(babelEnv, destDir) {
 }
 
 /**
- * 编译cjs
+ * 编译commonjs
  */
-function compileCJS() {
+function compileCommonjs() {
   const { dest } = paths;
-  return compileScripts('cjs', dest.lib);
+  return compileScripts('commonjs', dest.lib);
 }
 
 /**
@@ -102,7 +102,7 @@ function less2css() {
     .pipe(gulp.dest(paths.dest.dist));
 }
 
-const buildScripts = gulp.series(compileCJS, compileES);
+const buildScripts = gulp.series(compileCommonjs, compileES);
 const build = gulp.parallel(buildScripts, copyLESS, less2css);
 exports.build = build;
 
