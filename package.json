@@ -27,6 +27,11 @@
     "lib",
     "es"
   ],
+	"sideEffects": [
+		"dist/*",
+		"es/**/style/*",
+		"lib/**/style/*"
+	],
   "dependencies": {
     "@babel/runtime-corejs3": "^7.12.5"
   },
